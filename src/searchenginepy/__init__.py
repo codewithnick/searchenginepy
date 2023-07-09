@@ -1,6 +1,9 @@
 # __init__.py
 # #importing google class
 from .Google import Google
+from .Bing import Bing
+from .DuckDuckGo import DuckDuckGo
+from .Brave import Brave
 import logging
 __pkgname='searchenginepy'
 logging.basicConfig(level=logging.INFO)
