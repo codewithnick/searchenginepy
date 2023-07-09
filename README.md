@@ -34,26 +34,26 @@ using google to search a query
 ### google
 
 ```
-from searchenginepy import Google
+from searchenginepy.Google import Google
 list=Google().search("search query")
 ```
 
 ### Bing
 
 ```
-from searchenginepy import Bing
+from searchenginepy.Bing import Bing
 list=Bing().search("search query")
 ```
 ### Brave
 ```
-from searchenginepy import Brave
+from searchenginepy.Brave import Brave
 list=Brave().search("search query")
 ```
 
 ### DuckDuckGo
 
 ```
-from searchenginepy import DuckDuckGo
+from searchenginepy.DuckDuckGo import DuckDuckGo
 list=DuckDuckGo().search("search query")
 ```
 
