@@ -7,7 +7,7 @@ long_description = (this_directory / "README.md").read_text()
 
 setup(
   name = 'searchenginepy',         # How you named your package folder (MyLib)
-  version = '0.1.5',      # Start with a small number and increase it with every change you make
+  version = '0.1.6',      # Start with a small number and increase it with every change you make
   license='MIT',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
   description = 'Query popular search engines and get results easily',   # Give a short description about your library
   long_description=long_description,

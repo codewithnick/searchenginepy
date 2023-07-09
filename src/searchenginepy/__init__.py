@@ -2,7 +2,7 @@
 # #importing google class
 from .Google import Google
 from .Bing import Bing
-from .DuckDuckGo import DuckDuckGo
+from .DuckDuckGo import Duckduckgo
 from .Brave import Brave
 import logging
 __pkgname='searchenginepy'
@@ -18,6 +18,18 @@ class SearchEngine:
     def google(self):
         googleobj=Google()
         result=googleobj.search(self.query)
+        return result
+    def bing(self):
+        bingobj=Bing()
+        result=bingobj.search(self.query)
+        return result
+    def duckduckgo(self):
+        duckduckgoobj=Duckduckgo()
+        result=duckduckgoobj.search(self.query)
+        return result
+    def brave(self):
+        braveobj=Brave()
+        result=braveobj.search(self.query)
         return result
     def get_results(self):
         return self.results
