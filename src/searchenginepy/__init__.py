@@ -12,24 +12,25 @@ log = logging.getLogger(__name__)
 log.info('Initializing '+__pkgname+' package')
 
 class SearchEngine:
-    def __init__(self, query):
+    def __init__(self, query,pagenumber=1):
         self.query = query
         self.results = []
+        self.pagenumber=pagenumber
     def google(self):
         googleobj=Google()
-        result=googleobj.search(self.query)
+        result=googleobj.search(self.query,self.pagenumber)
         return result
     def bing(self):
         bingobj=Bing()
-        result=bingobj.search(self.query)
+        result=bingobj.search(self.query,self.pagenumber)
         return result
     def duckduckgo(self):
         duckduckgoobj=Duckduckgo()
-        result=duckduckgoobj.search(self.query)
+        result=duckduckgoobj.search(self.query,self.pagenumber)
         return result
     def brave(self):
         braveobj=Brave()
-        result=braveobj.search(self.query)
+        result=braveobj.search(self.query,self.pagenumber)
         return result
     def get_results(self):
         return self.results

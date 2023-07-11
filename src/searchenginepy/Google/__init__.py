@@ -6,10 +6,13 @@ class Google():
         """_summary_
         """
         print('search engine : google')
-        self.url = 'https://www.google.com/search?q='
+        self.url = 'https://www.google.com/search'
         self.headers = {'User-Agent': 'Mozilla/5.0'}
         self.results = []
-    def search(self,query ) -> list:
+        self.payload={}
+    def search(self,query ,pagenumber=1) -> list:
+        self.payload['q']=query #query parameter to google
+        self.payload['start']=(pagenumber-1)*10 #pagenumber parameter to google
         """_summary_
 
         Args:
@@ -18,7 +21,7 @@ class Google():
         Returns:
             list: list of links from google search
         """
-        r = requests.get(self.url+query, headers=self.headers)
+        r = requests.get(self.url,params=self.payload, headers=self.headers)
         if r.status_code == 200:
             self.results.append(r.text)
         else:

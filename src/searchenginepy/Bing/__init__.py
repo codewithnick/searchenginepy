@@ -6,10 +6,13 @@ class Bing():
         """_summary_
         """
         print('search engine : bing')
-        self.url = 'https://www.bing.com/search?q='
+        self.url = 'https://www.bing.com/search'
         self.headers = {'User-Agent': 'Mozilla/5.0'}
         self.results = []
-    def search(self,query ) -> list:
+        self.payload={}
+    def search(self,query,pagenumber=1) -> list:
+        self.payload['q']=query #query parameter to bing
+        self.payload['first']=(pagenumber-1)*10+1 #pagenumber parameter to bing
         """_summary_
 
         Args:

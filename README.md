@@ -44,7 +44,9 @@ list=Google().search("search query")
 from searchenginepy.Bing import Bing
 list=Bing().search("search query")
 ```
+
 ### Brave
+
 ```
 from searchenginepy.Brave import Brave
 list=Brave().search("search query")
@@ -63,3 +65,7 @@ list=DuckDuckGo().search("search query")
 - Bing
 - DuckDuckGo
 - Brave
+
+## Example script
+
+[example.py](./src/example.py)

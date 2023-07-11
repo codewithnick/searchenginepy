@@ -6,10 +6,13 @@ class Duckduckgo():
         """_summary_
         """
         print('search engine : DuckDuckGo')
-        self.url = 'https://duckduckgo.com/?q='
+        self.url = 'https://duckduckgo.com/'
         self.headers = {'User-Agent': 'Mozilla/5.0'}
         self.results = []
-    def search(self,query ) -> list:
+        self.payload={}
+    def search(self,query ,pagenumber=1) -> list:
+        self.payload['q']=query #query parameter to Duckduckgo
+        self.payload['start']=(pagenumber-1)*10 #pagenumber parameter to Duckduckgo (does not work)
         """_summary_
 
         Args:
@@ -18,7 +21,7 @@ class Duckduckgo():
         Returns:
             list: list of links from Duck search
         """
-        r = requests.get(self.url+query, headers=self.headers)
+        r = requests.get(self.url, headers=self.headers)
         if r.status_code == 200:
             self.results.append(r.text)
         else:

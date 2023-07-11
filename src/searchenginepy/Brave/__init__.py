@@ -6,10 +6,13 @@ class Brave():
         """_summary_
         """
         print('search engine : Brave')
-        self.url = 'https://search.brave.com/search?q='
+        self.url = 'https://search.brave.com/search'
         self.headers = {'User-Agent': 'Mozilla/5.0'}
         self.results = []
-    def search(self,query ) -> list:
+        self.payload={}
+    def search(self,query,pagenumber=1) -> list:
+        self.payload['q']=query #query parameter to Brave
+        self.payload['offset']=(pagenumber-1) #pagenumber parameter to Brave
         """_summary_
 
         Args:
@@ -18,7 +21,7 @@ class Brave():
         Returns:
             list: list of links from Brave search
         """
-        r = requests.get(self.url+query, headers=self.headers)
+        r = requests.get(self.url, headers=self.headers)
         if r.status_code == 200:
             self.results.append(r.text)
         else:
