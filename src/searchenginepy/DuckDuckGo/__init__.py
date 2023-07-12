@@ -8,7 +8,7 @@ class Duckduckgo():
         print('search engine : DuckDuckGo')
         self.url = 'https://html.duckduckgo.com/html/'
         self.headers = {'User-Agent': 'Mozilla/5.0'}
-        self.httpallowed=True
+        #self.httpallowed=True
         self.results = []
         self.payload={}
     def search(self,query ,pagenumber=1) -> list:
@@ -31,7 +31,7 @@ class Duckduckgo():
         soup = bs4.BeautifulSoup(r.text, 'html.parser')
         soup.find_all('a')
         links=[i.get('href') for i in soup.find_all('a')]
-        links=self.cleanlinks(links)
+        #links=self.cleanlinks(links)
         return links
     def cleanlinks(self,links):
         #clean links
