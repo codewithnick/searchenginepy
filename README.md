@@ -11,7 +11,7 @@ search engine for python (Query and scrape search engines)
 ## Importing
 
 ```
-import SearchEngine from searchenginepy
+from searchenginepy import SearchEngine
 engine=SearchEngine()
 ```
 
