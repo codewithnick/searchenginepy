@@ -75,11 +75,14 @@ results=Google().search("search query")
 
 ## Example Specifying page
 
+The page number is set to 1 by default but you can can pass in the desired page after your query as seen below
+
 ```
 from searchenginepy.Google import Google
+
 results=Google().search("search query", 3)
 ```
-### here we are selecting the third page
+
 
 ## Supported search engines
 
