@@ -119,3 +119,58 @@ Enhancement suggestions are tracked as [GitHub issues](/issues).
 
 
 
+### Your First Code Contribution
+
+Welcome to the community! Before making your first code contribution, please ensure you have set up the project locally and have familiarized yourself with the codebase. Here's how you can make your first contribution:
+
+1.Fork the Repository: Start by forking the main repository to your GitHub account. This will create a copy of the project under your account.
+
+2.Clone the Repository: Clone the forked repository to your local machine using the following command:
+
+**git clone https://github.com/codewithnick/searchenginepy.git**
+
+3.Create a New Branch: Create a new branch for your contribution. Use a descriptive branch name that reflects the nature of your changes:
+**git checkout -b feature/your-feature-name**
+
+4.Make Changes: Write your code, add new features, or fix bugs. Ensure your code follows the project's coding style and conventions.
+
+5.Test Your Changes: Before submitting your contribution, make sure to test your changes thoroughly. Run the existing tests and add new ones if necessary to validate your modifications.
+
+6.Commit Your Changes: Commit your changes with a clear and concise commit message that explains the purpose of your changes:
+**git commit -m "Add description of your changes"**
+
+7.Push Your Changes: Push your changes to your forked repository on GitHub:
+**git push origin feature/your-feature-name**
+
+8.Create a Pull Request: Go to the original repository on GitHub and create a new pull request. Provide a detailed description of your changes in the pull request template. Your pull request will be reviewed, and feedback may be provided.
+
+
+### Improving The Documentation
+Clear and comprehensive documentation is crucial for the project's users and contributors. If you want to improve the documentation:
+
+**Identify Documentation Gaps**: Review the existing documentation to identify areas that can be improved or expanded. This could include installation guides, usage examples, or API documentation.
+
+**Write Clear and Concise Content**: When adding or modifying documentation, ensure that the language is clear, concise, and easy to understand. Use examples and code snippets where applicable to illustrate usage.
+
+**Update README and Usage Guides**: If you're adding new features, make sure to update the project's README file and any usage guides to reflect these changes. Users should have a clear understanding of how to use the new features.
+
+**Correct Errors and Typos**: If you find any errors or typos in the existing documentation, feel free to fix them. Attention to detail is key to maintaining high-quality documentation.
+
+## Styleguides
+### Commit Messages
+When making commits to the project, follow these guidelines for clear and informative commit messages:
+
+1.Use present tense and imperative mood (e.g., "Add feature" instead of "Added feature").
+
+2.Keep the subject line concise and descriptive, summarizing the purpose of the commit in 50 characters or less.
+
+3.If needed, provide a detailed description of the changes in the commit body. Mention why the change was made and how it affects the project.
+
+
+## Join The Project Team
+
+Contributors who consistently demonstrate their expertise, dedication, and understanding of the project may be invited to join the project team. Project team members have direct access to merge changes into the main repository.
+
+If you are interested in becoming a project team member, actively participate in discussions, provide valuable contributions, and help other community members. Your contributions will be recognized and considered for team membership.
+
+Thank you for your interest in contributing to **SearchEnginePy**! Your contributions are highly valued, and together, we can create a powerful and efficient search engine for the command line. Happy coding! 🚀
