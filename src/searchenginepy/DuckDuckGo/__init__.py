@@ -11,28 +11,22 @@ class Duckduckgo():
         self.httpallowed=True
         self.results = []
         self.payload={}
-    def search(self,query ,pagenumber=1) -> list:
-        self.payload['q']=query #query parameter to Duckduckgo
-        #self.payload['start']=(pagenumber-1)*10 #pagenumber parameter to Duckduckgo (does not work)
-        """_summary_
+    def search(self, query, num_pages=1):
+        all_links = []
+        for page in range(1, num_pages + 1):
+            url = f'{self.base_url}{query}&page={page}'
+            response = self.session.get(url, headers=self.headers)
+            if response.status_code == 200:
+                self.results.append(response.text)
+                soup = BeautifulSoup(response.text, 'html.parser')
+                links = [i.get('href') for i in soup.find_all('a')]
+                links = self.cleanlinks(links)
+                all_links.extend(links)
+            else:
+                print(f"Failed to retrieve results for page {page}")
 
-        Args:
-            query (_type_): _description_
-
-        Returns:
-            list: list of links from Duck search
-        """
-        r = requests.get(self.url, headers=self.headers,params=self.payload)
-        if r.status_code == 200:
-            self.results.append(r.text)
-        else:
-            self.results.append('Unable to get results')
-        #parse results using bs4
-        soup = bs4.BeautifulSoup(r.text, 'html.parser')
-        soup.find_all('a')
-        links=[i.get('href') for i in soup.find_all('a')]
-        links=self.cleanlinks(links)
-        return links
+        return all_links
+    
     def cleanlinks(self,links):
         #clean links
         links=[i for i in links if i is not None]
