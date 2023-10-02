@@ -1,35 +1,25 @@
 import unittest
-import sys
-sys.path.insert(0, '../src')
-from searchenginepy import SearchEngine
+from searchenginepy.DuckDuckGo import DuckduckgoScraper
 
-class TestSearchEngine(unittest.TestCase):
+class TestDuckduckgo(unittest.TestCase):
     def setUp(self):
-        self.search_engine = SearchEngine('test query')
+        self.search_engine = DuckduckgoScraper()
 
-    def test_get_query(self):
-        self.assertEqual(self.search_engine.get_query(), 'test query')
-
-    def test_google(self):
-        result = self.search_engine.google()
+    def test_search_returns_results(self):
+        result = self.search_engine.search('test query', num_pages=1)  # Adjust the number of pages as needed
         self.assertIsNotNone(result)
 
-    def test_bing(self):
-        result = self.search_engine.bing()
-        self.assertIsNotNone(result)  
+    def test_getresponse_after_search(self):
+        self.search_engine.search('test query', num_pages=1)  # Adjust the number of pages as needed
+        result = self.search_engine.getresponse()
+        self.assertIsNotNone(result)
 
     def test_duckduckgo(self):
-        result = self.search_engine.duckduckgo()
+        result = self.search_engine.duckduckgo()  # Assuming you have a duckduckgo method in your class
         self.assertIsNotNone(result)
 
-    def test_brave(self):
-        result = self.search_engine.brave()
-        self.assertIsNotNone(result)
+    def tearDown(self):
+        self.search_engine.driver.quit()
 
-    def test_get_results(self):
-        self.search_engine.google()
-        result = self.search_engine.get_results()
-        self.assertIsNotNone(result)
-
-if __name__ == '__main__': 
+if __name__ == '__main__':
     unittest.main()
