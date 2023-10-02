@@ -1,39 +1,50 @@
 #Duckduckgo class which has functions to search and get results
-import requests 
-import bs4
-class Duckduckgo():
-    def __init__(self):
-        """_summary_
-        """
-        print('search engine : DuckDuckGo')
-        self.url = 'https://html.duckduckgo.com/html/'
-        self.headers = {'User-Agent': 'Mozilla/5.0'}
-        self.httpallowed=True
-        self.results = []
-        self.payload={}
-    def search(self, query, num_pages=1):
-        all_links = []
-        for page in range(1, num_pages + 1):
-            url = f'{self.base_url}{query}&page={page}'
-            response = self.session.get(url, headers=self.headers)
-            if response.status_code == 200:
-                self.results.append(response.text)
-                soup = BeautifulSoup(response.text, 'html.parser')
-                links = [i.get('href') for i in soup.find_all('a')]
-                links = self.cleanlinks(links)
-                all_links.extend(links)
-            else:
-                print(f"Failed to retrieve results for page {page}")
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
+import time
 
-        return all_links
-    
-    def cleanlinks(self,links):
-        #clean links
-        links=[i for i in links if i is not None]
-        if self.httpallowed:
-            links=[i for i in links if i.startswith('http')]
-        else:
-            links=[i for i in links if i.startswith('https')]
+class DuckduckgoScraper:
+    def __init__(self):
+        self.base_url = 'https://duckduckgo.com/'
+        self.driver = webdriver.Chrome()  # You need to have Chrome WebDriver installed
+        self.results = []
+
+    def search(self, query, num_pages=1):
+        self.driver.get(self.base_url)
+        search_input = self.driver.find_element(By.NAME, 'q')
+        search_input.send_keys(query)
+        search_input.send_keys(Keys.RETURN)
+
+        for _ in range(num_pages):
+            self.scroll_down()
+            time.sleep(2)  # You may adjust the delay as needed
+            self.click_more_results()
+
+        links = self.extract_links()
+        self.driver.quit()
         return links
-    def getresponse(self):
-        return self.results
+
+    def scroll_down(self):
+        actions = ActionChains(self.driver)
+        actions.send_keys(Keys.END)
+        actions.perform()
+
+    def click_more_results(self):
+        try:
+            more_results_button = self.driver.find_element(By.CLASS_NAME, 'result--more__btn')
+            more_results_button.click()
+        except Exception as e:
+            print(f"Unable to click 'More Results' button: {e}")
+
+    def extract_links(self):
+        soup = BeautifulSoup(self.driver.page_source, 'html.parser')
+        links = [a['href'] for a in soup.find_all('a', class_='result__url')]
+        return links
+
+# Example usage:
+scraper = DuckduckgoScraper()
+search_results = scraper.search('your_query_here', num_pages=3)
+for link in search_results:
+    print(link)
