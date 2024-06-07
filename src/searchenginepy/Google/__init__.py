@@ -14,7 +14,6 @@ class Google():
         self.payload={}
     def search(self,query ,pagenumber=1) -> list:
         self.payload['q']=query #query parameter to google
-        self.payload['start']=(pagenumber-1)*10 #pagenumber parameter to google
         """_summary_
 
         Args:
