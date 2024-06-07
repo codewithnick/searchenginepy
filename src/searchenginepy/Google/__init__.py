@@ -1,6 +1,7 @@
 #google class which has functions to search and get results
 import requests 
 import bs4
+from urllib.parse import urlparse
 class Google():
     def __init__(self):
         """_summary_
@@ -35,11 +36,17 @@ class Google():
         return links
     def cleanlinks(self,links):
         #clean links
-        links=[i for i in links if i is not None]
-        if self.httpallowed:
-            links=[i for i in links if i.startswith('http')]
-        else:
-            links=[i for i in links if i.startswith('https')]
-        return links
+        clean_links=[]
+        for i in links:
+            if(i==None or 'http' not in i):
+                continue
+            position = i.find('http')
+            i=i[position:]
+            result = urlparse(i)
+            # A valid URL should have at least a scheme and netloc
+            if(not result.scheme or not result.netloc):
+                continue
+            clean_links.append(i)
+        return clean_links
     def getresponse(self):
         return self.results
