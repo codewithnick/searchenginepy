@@ -7,8 +7,9 @@ from searchenginepy.DuckDuckGo import Duckduckgo
 from searchenginepy.Brave import Brave
 from searchenginepy import SearchEngine
 ################################################################
+PAGE_NUMBER_STRING="Page Number: "
 PAGE_NUMBER=1
-TOP_RESULT_STRING='Top result for page number:'
+RESULT_NUMBER_STRING="\nResult Number: "
 ################################################################
 #                       USING SEARCH ENGINE CLASS
 ###############################################################
@@ -18,19 +19,35 @@ obj2=searchengine.bing()
 obj3=searchengine.duckduckgo()
 obj4=searchengine.brave()
 if(len(obj1)>0):
-    print(TOP_RESULT_STRING,PAGE_NUMBER,' from google:',obj1[0])
+    print("\n",PAGE_NUMBER_STRING,PAGE_NUMBER,"\n")
+    for res,obj in enumerate(obj1):
+        print(RESULT_NUMBER_STRING,res)
+        print('from google:')
+        print(obj)
 else:
     print('No results from google')
 if(len(obj2)>0):
-    print(TOP_RESULT_STRING,PAGE_NUMBER,' from bing:',obj2[0])
+    print("\n",PAGE_NUMBER_STRING,PAGE_NUMBER,"\n")
+    for res,obj in enumerate(obj2):
+        print(RESULT_NUMBER_STRING,res)
+        print('from bing:')
+        print(obj)
 else:
     print('No results from bing')
 if(len(obj3)>0):
-    print(TOP_RESULT_STRING,PAGE_NUMBER,' from duckduckgo:',obj3[0])
+    print("\n",PAGE_NUMBER_STRING,PAGE_NUMBER,"\n")
+    for res,obj in enumerate(obj3):
+        print(RESULT_NUMBER_STRING,res)
+        print('from duckduckgo:')
+        print(obj)
 else:
     print('No results from duckduckgo')
 if(len(obj4)>0):
-    print(TOP_RESULT_STRING,PAGE_NUMBER,' from brave:',obj4[0])
+    print("\n",PAGE_NUMBER_STRING,PAGE_NUMBER,"\n")
+    for res,obj in enumerate(obj4):
+        print(RESULT_NUMBER_STRING,res)
+        print('from brave:')
+        print(obj)
 else:
     print('No results from brave')
 #################################################################
@@ -39,21 +56,37 @@ else:
 PAGE_NUMBER=2
 
 googleobj=Google()
-res=googleobj.search('google',PAGE_NUMBER)
-if(len(res)>0):
-    print(TOP_RESULT_STRING,PAGE_NUMBER,' from google:',res[0])
+response=googleobj.search('google',PAGE_NUMBER)
+if(len(response)>0):
+    print("\n",PAGE_NUMBER_STRING,PAGE_NUMBER,"\n")
+    for res,obj in enumerate(response):
+        print(RESULT_NUMBER_STRING,res)
+        print('from google:')
+        print(obj)
 
 braveobj=Brave()
-res=braveobj.search('brave',PAGE_NUMBER)
-if(len(res)>0):
-    print(TOP_RESULT_STRING,PAGE_NUMBER,' from brave:',res[0])
+response=braveobj.search('brave',PAGE_NUMBER)
+if(len(response)>0):
+    print("\n",PAGE_NUMBER_STRING,PAGE_NUMBER,"\n")
+    for res,obj in enumerate(response):
+        print(RESULT_NUMBER_STRING,res)
+        print('from brave:')
+        print(obj)
 
 duckduckgoobj=Duckduckgo() 
-res=duckduckgoobj.search('duckduckgo',PAGE_NUMBER)
-if(len(res)>0):
-    print(TOP_RESULT_STRING,PAGE_NUMBER,' from duckduckgo:',res[0])
+response=duckduckgoobj.search('duckduckgo',PAGE_NUMBER)
+if(len(response)>0):
+    print("\n",PAGE_NUMBER_STRING,PAGE_NUMBER,"\n")
+    for res,obj in enumerate(response):
+        print(RESULT_NUMBER_STRING,res)
+        print('from duckduckgo:')
+        print(obj)
 
 bingobj=Bing()
-res=bingobj.search('bing',PAGE_NUMBER)
-if(len(res)>0):
-    print(TOP_RESULT_STRING,PAGE_NUMBER,' from bing:',res[0]) 
+response=bingobj.search('bing',PAGE_NUMBER)
+if(len(response)>0):
+    print("\n",PAGE_NUMBER_STRING,PAGE_NUMBER,"\n")
+    for res,obj in enumerate(response):
+        print(RESULT_NUMBER_STRING,res)
+        print('from bing:')
+        print(obj)
